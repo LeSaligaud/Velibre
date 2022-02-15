@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+
+    {% else %}
+        <form class="form-signin">
+            <img class="mb-4" src="{{ asset('images/logo.png') }}" alt="Logo Vélibre">
+            <h1 class="h3 mb-3 fw-normal">Veuillez vous connectez</h1>
+
+            <div class="form-floating">
+                <input style="height: 6vh" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Adresse mail</label>
+            </div>
+
+            <div class="form-floating">
+                <input style="height: 6vh" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Mot de passe</label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary mt-2" type="submit">Se connecter</button>
+
+            <p>Pas de compte, <a href="">cliquez ici</a></p>
+        </form>
+    {% endif %}
+{% endblock %}
