@@ -3,33 +3,6 @@ body {
     background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 
-.form-signin {
-    max-width: 60vw;
-    max-height: 70vh;
-    margin: auto;
-    margin-top: 10vh;
-    text-align: center;
-}
-
 .form-signin img {
     height: 10vh;
-}
-
-.form-signin h1, p {
-    font-size: 50px;
-}
-
-.form-signin input {
-    margin-bottom: 2vh;
-    font-size: 35px;
-}
-
-.form-signin label {
-    font-size: 40px;
-}
-
-.form-signin button {
-    height: 6vh;
-    font-size: 50px;
-    border-radius: 10px;
 }
