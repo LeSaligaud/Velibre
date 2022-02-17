@@ -1,7 +1,209 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-    <div style="height: 180px;" id="map"></div>
+    <div style="height: 90vh;width: 100vw;z-index: 99" id="map"></div>
+
+    <script type="text/javascript">
+        let map = L.map('map').setView([48.85780, 2.34111], 12);
+
+        let geojsonFeature = {
+            "type": "FeatureCollection",
+            "features": [{
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3558807373046875, 48.83195562723763]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3232650756835938, 48.83850916871952]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3016357421875, 48.84799898474839]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3788833618164062, 48.84076881182656]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.273483276367187, 48.8473212003792]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.294769287109375, 48.87419961175908]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3970794677734375, 48.832407623139915]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3678970336914062, 48.822010685713316]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3263549804687496, 48.82291485286295]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.2889328002929688, 48.83353759505566]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.2916793823242188, 48.86110101269274]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3201751708984375, 48.86539231071163]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3133087158203125, 48.85906816414895]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3263549804687496, 48.8565834593617]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3960494995117188, 48.848902682969765]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3699569702148433, 48.853646831055556]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3558807373046875, 48.849806364881616]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3407745361328125, 48.846191539376825]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.409439086914062, 48.86494061245833]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3871231079101562, 48.86290791986464]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.4053192138671875, 48.877812415009195]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.377166748046875, 48.87239311228893]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3654937744140625, 48.86697322249138]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3431777954101562, 48.87171565817035]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.349014282226562, 48.864263057433874]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3129653930664062, 48.8809734038198]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3091888427734375, 48.8748770322432]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3503875732421875, 48.88435995587174]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3294448852539062, 48.88503723876435]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3270416259765625, 48.87803820654905]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3902130126953125, 48.897903870976286]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3778533935546875, 48.890906639609454]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3678970336914062, 48.88458571785511]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3596572875976562, 48.89812957181126]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.33734130859375, 48.898355271627125]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3136520385742188, 48.89474395227992]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3479843139648438, 48.820880453838114]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3054122924804688, 48.828339513221444]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.2697067260742188, 48.83963900301541]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.2751998901367188, 48.871038194878636]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.2649002075195312, 48.857938768171536]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3802566528320312, 48.83195562723763]}
+            }, {
+                "type": "Feature",
+                "properties": {"marker-color": "#0433ff", "marker-size": "medium", "marker-symbol": "bicycle"},
+                "geometry": {"type": "Point", "coordinates": [2.3459243774414062, 48.840090929598006]}
+            }]
+        }
+
+        var myStyle = {
+            "color": "#0433ff",
+            "weight": 5,
+            "opacity": 0.65,
+            "marker-symbol": "bicycle"
+        };
+
+        L.geoJSON(geojsonFeature, {
+            style: myStyle
+        }).addTo(map);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'sk.eyJ1IjoiamFyY2hhbWJhdWx0IiwiYSI6ImNrenBtM3l6ZTAyMmEyeWxqbmFydTg5ZnMifQ.I0cWGny1kddLYzR86KdRHg'
+        }).addTo(map);
+    </script>
 {% endblock %}
+
+
