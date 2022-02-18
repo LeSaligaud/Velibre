@@ -3,7 +3,7 @@
 
 {% block body %}
 
-    <div style="height: 85vh;width: 100vw;z-index: 99" id="map"></div>
+    <div style="height: 80vh;width: 100vw;z-index: 99" id="map"></div>
 
     <script type="text/javascript">
         let map = L.map('map').setView([48.85780, 2.34111], 12);
@@ -16,8 +16,11 @@
                     "type": "Feature",
                     "properties": {
                         "name": "{{ station.name }}",
+                        {% if station.velos.count is same as 0 %}
+                        "show_on_map": "false",
+                        {% endif %}
                         "amenity": "Station de vélo",
-                        "popupContent": "{{ station.name }} dont {{ station.velos.count }} vélos disponible",
+                        "popupContent": {{ station.velos.count }} + " vélos dispo.",
                         "marker-color": "#0433ff",
                         "marker-size": "medium",
                         "marker-symbol": "bicycle"
@@ -30,17 +33,7 @@
                 {% endfor %}
             ]
         }
-        function onEachFeature(feature, layer) {
-            // does this feature have a property named popupContent?
-            if (feature.properties && feature.properties.popupContent) {
-                layer.bindPopup(feature.properties.popupContent);
-            }
-
-            return feature.properties.show_on_map;
-        }
-
-        //L.geoJSON(geojsonFeature).addTo(map);
-        L.geoJSON(geojsonFeature, {onEachFeature: onEachFeature}).addTo(map);
+        L.geoJSON(geojsonFeature).addTo(map);
 
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -51,14 +44,6 @@
             accessToken: 'sk.eyJ1IjoiamFyY2hhbWJhdWx0IiwiYSI6ImNrenBtM3l6ZTAyMmEyeWxqbmFydTg5ZnMifQ.I0cWGny1kddLYzR86KdRHg'
         }).addTo(map);
     </script>
-
-    <div style="width: 100vw;height: 15vh;position: absolute;bottom: 0;left:0;background-color: white;border: 1px solid lightgrey">
-        <nav>
-            <ul>
-                <button class="btn btn-danger"><a href="{{ path('app_logout') }}">Déconnexion</a></button>
-            </ul>
-        </nav>
-    </div>
 {% endblock %}
 
 
