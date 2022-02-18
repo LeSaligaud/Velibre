@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VeloRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VeloRepository::class)]
@@ -18,6 +20,14 @@ class Velo
 
     #[ORM\ManyToOne(targetEntity: Station::class, inversedBy: 'velos')]
     private $station;
+
+    #[ORM\OneToMany(mappedBy: 'velo', targetEntity: Reservation::class)]
+    private $reservations;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -44,6 +54,36 @@ class Velo
     public function setStation(?Station $station): self
     {
         $this->station = $station;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reservation[]
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setVelo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getVelo() === $this) {
+                $reservation->setVelo(null);
+            }
+        }
 
         return $this;
     }

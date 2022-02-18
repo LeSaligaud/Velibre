@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Velo;
 use App\Repository\StationRepository;
 use App\Repository\VeloRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,5 +27,11 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+    }
+
+    #[Route('/reservation', name: "reservation")]
+    public function reservation() {
+        $this->addFlash('reussi', "Vous avez bien reserver");
+        $this->redirectToRoute('home');
     }
 }

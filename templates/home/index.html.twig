@@ -3,6 +3,12 @@
 
 {% block body %}
 
+    {% for message in app.flashes('success') %}
+        <div class="col-md-6 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <div style="height: 85vh;width: 100vw;z-index: 99" id="map"></div>
 
     <script type="text/javascript">
@@ -17,7 +23,11 @@
                     "properties": {
                         "name": "{{ station.name }}",
                         "amenity": "Station de vélo",
-                        "popupContent": "{{ station.name }} dont {{ station.velos.count }} vélos disponible",
+                        {% if station.velos.count is same as(0) %}
+                        "popupContent": "Il n'y as plus de vélos disponible dans la station {{ station.name }}",
+                        {% else %}
+                        "popupContent": '{{ station.name }} <br> <br> {{ station.velos.count }} vélos disponible <br><br> <div style="display:flex;justify-content:center;"> <a style="color: white" href="{{ path('reservation') }}" class="btn btn-success">Louer un vélo</a> </div>',
+                        {% endif %}
                         "marker-color": "#0433ff",
                         "marker-size": "medium",
                         "marker-symbol": "bicycle"
@@ -54,8 +64,8 @@
 
     <div style="width: 100vw;height: 15vh;position: absolute;bottom: 0;left:0;background-color: white;border: 1px solid lightgrey">
         <nav>
-            <ul>
-                <button class="btn btn-danger"><a href="{{ path('app_logout') }}">Déconnexion</a></button>
+            <ul class="mt-3 d-flex justify-content-center">
+                <a class="btn btn-danger" href="{{ path('app_logout') }}">Déconnexion</a>
             </ul>
         </nav>
     </div>
